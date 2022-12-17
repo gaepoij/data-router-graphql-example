@@ -14,7 +14,7 @@ npm run dev
 ```
 
 
-This exmaple includes one route. Check src/main.tsx to see how it is defined. Uses new 6.4.3 introduced createBrowserRouter to create data router. 
+This example includes one route. Check src/main.tsx to see how it is defined. Uses new 6.4.3 introduced createBrowserRouter to create data router. 
 The route has `action` and `loader`.  Loader function defines what is loaded before Route renders. Action is function that will be run when write 
 operation happens in the route. Ex. form submit. 
 
