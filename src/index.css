@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: #fdfdff;
+  font-family: "roboto";
+}
+
+#root {
+  height: 100%;
+}
