@@ -1,4 +1,4 @@
-import {gql } from "@apollo/client";
+import { gql } from "@apollo/client";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import {
@@ -13,26 +13,25 @@ import { Ship, ShipsQuery } from "./generated/graphql";
 export const action: ActionFunction = async ({ request }) => {
   let formData = await request.formData();
   const formPayload = Object.fromEntries(formData);
-	console.log("FROM ACTION", formPayload);
+  console.log("FROM ACTION", formPayload);
 
-	// Validation can be done here with zod or yup for example. 
-	const errors = {}
+  // Validation can be done here with zod or yup for example.
+  const errors = {};
 
+  // Intent can be used to describe which form / button this action originates.
+  // for example we could have a route with multiple forms, like 2 modals with their own forms.
+  // In each form we can describe intent on the form submit button.
+  const intent = formPayload.intent;
 
-	// Intent can be used to describe which form / button this action originates. 
-	// for example we could have a route with multiple forms, like 2 modals with their own forms. 
-	// In each form we can describe intent on the form submit button.
-	const intent = formPayload.intent;
+  if (intent === "submit_new") {
+    // Do graphql mutation to submit new.
+  } else if (intent === "update") {
+    // Update mutation
+  } else if (intent === "delete") {
+    // delete
+  }
 
-	if(intent === "submit_new") {
-		// Do graphql mutation to submit new.
-	} else if (intent === "update") {
-		// Update mutation
-	} else if (intent === "delete") {
-		// delete
-	}
- 
-	// can be retrieved on component with useActionData to show validation / network -errors etc.
+  // can be retrieved on component with useActionData to show validation / network -errors etc.
   return { errors };
 };
 
@@ -85,7 +84,9 @@ function CreateNew() {
           label="info"
           variant="outlined"
         />
-        <Button name="intent" value="submit_new" type="submit">Store new</Button>
+        <Button name="intent" value="submit_new" type="submit">
+          Store new
+        </Button>
       </Form>
     </Box>
   );
